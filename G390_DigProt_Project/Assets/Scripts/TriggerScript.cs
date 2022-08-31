@@ -20,7 +20,10 @@ public class TriggerScript : MonoBehaviour
 
     void Fire()
     {
-        Rigidbody2D bulletClone = (Rigidbody2D)Instantiate(bullet, transform.position, transform.rotation);
+        Vector3 relativePos = (player.position - transform.position).normalized;
+        Quaternion rotation = Quaternion.LookRotation(relativePos);
+
+        Rigidbody2D bulletClone = (Rigidbody2D)Instantiate(bullet, transform.position, rotation);
         bulletClone.velocity = transform.forward * bulletSpeed;
     }
 
