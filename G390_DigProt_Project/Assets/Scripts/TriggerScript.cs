@@ -4,9 +4,30 @@ using UnityEngine;
 
 public class TriggerScript : MonoBehaviour
 {
+    public int cost;
     public float radius = 3f;
-
     public Transform player;
+    public float bulletSpeed = 10;
+    public Rigidbody2D bullet;
+    public float fireSpeed;
+
+    private float fireTimer = 0f;
+
+    private void Start()
+    {
+        fireTimer = fireSpeed;
+    }
+
+    void Fire()
+    {
+        Rigidbody2D bulletClone = (Rigidbody2D)Instantiate(bullet, transform.position, transform.rotation);
+        bulletClone.velocity = transform.forward * bulletSpeed;
+    }
+
+    private void Update()
+    {
+        fireTimer -= Time.deltaTime;
+    }
 
     private void OnDrawGizmos()
     {
@@ -28,11 +49,14 @@ public class TriggerScript : MonoBehaviour
             lr.startWidth = 0.1f;
             lr.SetPosition(0, transform.position);
             lr.SetPosition(1, player.position);
-        }
-    }
 
-    private void Update()
-    {
-        
+            fireTimer -= Time.deltaTime;
+
+            if(fireTimer <= 0)
+            {
+                Fire();
+                fireTimer = fireSpeed;
+            }
+        }
     }
 }
