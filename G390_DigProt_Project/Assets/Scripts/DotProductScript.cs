@@ -6,6 +6,8 @@ public class DotProductScript : MonoBehaviour
 {
     public Transform playerTransform;
     SpriteRenderer buttonSprite;
+    [SerializeField] GUIContent buttonText;
+    
 
     private void Start()
     {
@@ -21,6 +23,10 @@ public class DotProductScript : MonoBehaviour
         if(directionScalar >= .99 || directionScalar <= -.99)
         {
             buttonSprite.color = Color.green;
+            if (Input.GetKeyDown(KeyCode.F))
+            {
+                buttonText.text = "Button pressed!";
+            }
         }
         else
         {
