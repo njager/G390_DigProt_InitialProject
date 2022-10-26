@@ -6,7 +6,7 @@ public class DotProductScript : MonoBehaviour
 {
     public Transform playerTransform;
     SpriteRenderer buttonSprite;
-    [SerializeField] GUIContent buttonText;
+    [SerializeField] TextAsset buttonText;
     
 
     private void Start()
@@ -25,7 +25,8 @@ public class DotProductScript : MonoBehaviour
             buttonSprite.color = Color.green;
             if (Input.GetKeyDown(KeyCode.F))
             {
-                buttonText.text = "Button pressed!";
+                //buttonText.text = "Button pressed!";
+                
             }
         }
         else

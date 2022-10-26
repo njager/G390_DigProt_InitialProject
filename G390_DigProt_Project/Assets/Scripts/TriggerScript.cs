@@ -13,6 +13,7 @@ public class TriggerScript : MonoBehaviour
 
     private float fireTimer = 0f;
 
+
     private void Start()
     {
         fireTimer = fireSpeed;
